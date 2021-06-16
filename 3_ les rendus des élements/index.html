@@ -12,13 +12,22 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="root"></div>
     <script type="text/babel">
-    
-    const ele1 = <p>Hello React</p>;
-        ReactDOM.render(ele1, document.getElementById('app'));
+
+function tick() {
+  const element = (
+    <div>
+      <h1>Bonjour, monde !</h1>
+      <h2>Il est {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(element, document.getElementById('root'));
+}
+
+setInterval(tick, 1000);
         </script>
-    <script src="index.js"></script>
+    
 </body>
 
 </html>
