@@ -12,42 +12,26 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="root"></div>
     <script type="text/babel">
-//APP compenent (parent)
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header name="hello from header" />
-        <Footer name="hello from footer"/>
-        </div>
-    )
-  }
-}
-//HEADER compenent(child)
 
-class Header extends React.Component {
-  render() {
-    return (
-      <header>{this.props.name}</header>
-    )
-  }
+function Welcome(props) {
+  return <h1>Bonjour, {props.name}</h1>;
 }
-//FOOTER compenent(child)
-class Footer extends React.Component {
-  render() {
-    return (
-      
-        <footer>{this.props.name}</footer>
-        
-    )
-  }
+
+function App() {
+  return (
+    <div>
+      <Welcome name="ISMAIL" />
+      <Welcome name="ABDELLAH" />
+      <Welcome name="KHALID" />
+    </div>
+  );
 }
 
 ReactDOM.render(
- <App />,
-  document.getElementById('app')
+  <App />,
+  document.getElementById('root')
 );
         </script>
     
