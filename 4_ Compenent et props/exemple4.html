@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js" defer></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" defer></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+
+    function formatDate(date) {
+      return date.toLocaleDateString();
+    }
+
+    function Avatar(props) {
+      return (
+        <img
+          className="Avatar"
+          src={props.user.avatarUrl}
+          alt={props.user.name}
+        />
+      );
+    }
+
+    function UserInfo(props) {
+      return (
+        <div className="UserInfo">
+          <Avatar user={props.user} />
+          <div className="UserInfo-name">{props.user.name}</div>
+        </div>
+      );
+    }
+
+    function Test(props) {
+      return (
+        <div className="Comment">
+          <UserInfo user={props.author} />
+          <div className="Comment-text">{props.text}</div>
+          <div className="Comment-date">
+            {formatDate(props.date)}
+          </div>
+        </div>
+      );
+    }
+
+    const profile = {
+      date: new Date(),
+      text: "I hope you like my cat!",
+      author: {
+        name: 'This is my cat ',
+        avatarUrl: 'data:image/png;base64,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'
+
+      },
+    };
+    ReactDOM.render(
+      <Test
+        date={profile.date}
+        text={profile.text}
+        author={profile.author}
+      />,
+      document.getElementById('app')
+    );
+
+
+  </script>
+</body>
+
+</html>
