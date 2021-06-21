@@ -1,0 +1,57 @@
+<!DOCTYPE html><html>
+<head>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+
+class Hour extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+    
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.test(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  test() {
+
+    // il n'appelle pas "render"
+    // this.state.date = new Date();
+
+    // il appelle render
+    this.setState({ date: new Date()});
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>HELLOOOOW !!</h1>
+        <h2>Il est {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+    <Hour />,
+    document.getElementById('root')
+  );
+
+</script>
+
+</body></html>
