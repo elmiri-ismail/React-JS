@@ -1,0 +1,33 @@
+<!DOCTYPE html><html>
+<head>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+
+class Hour extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Bonjour, monde !</h1>
+        <h2>Il est {this.props.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+function test() {
+  ReactDOM.render(
+    <Hour date={new Date()} />,
+    document.getElementById('root')
+  );
+}
+
+setInterval(test, 1000);
+</script>
+
+</body></html>
